@@ -1,11 +1,10 @@
 import sys
 input = sys.stdin.readline
 N = input()
-PList = list(map(int, input().split()))
-PList.sort()
+ascSortedPList = sorted(list(map(int, input().split())))
 totalP = 0
 totalSumP = 0
-for p in PList:
+for p in ascSortedPList:
     totalP  += p
     totalSumP += totalP
 print(totalSumP)
