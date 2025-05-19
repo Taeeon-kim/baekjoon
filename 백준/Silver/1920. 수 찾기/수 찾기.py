@@ -14,14 +14,13 @@ def bs(arr1:list, value):
         while right>= left:
             midIndex = (left + right) // 2
             if arr1[midIndex] == value:
-                results.append(1)
-                return 
+                return 1
             elif arr1[midIndex] > value:
                 right = midIndex -1
             elif arr1[midIndex] < value :
                 left = midIndex + 1
-        results.append(0)
+        return 0
 for value2 in arr2:
-    bs(arr1, value2)
+    results.append(bs(arr1, value2))
 
-print('\n'.join(map(str, results)))
+print('\n'.join(map(str, results)))  
