@@ -15,4 +15,4 @@ for number in numbers:
 
 print(" ".join(map(str, results)))
 
-# 시간복잡도 O(N), 공간복잡도 O(N)
+# 시간복잡도 O(N+M), 공간복잡도 O(N+M)
