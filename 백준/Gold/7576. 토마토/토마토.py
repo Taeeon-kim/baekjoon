@@ -3,7 +3,7 @@ import sys
 input = sys.stdin.readline
 
 boxes = []
-maturedTomatos = []
+
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 M, N = map(int, input().split())
@@ -14,20 +14,18 @@ for _ in range(N):
 
 for i in range(N):
     for j in range(M):
-        if boxes[i][j] == 1:
-            maturedTomatos.append((i,j))
-        elif boxes[i][j] == 0:
+        if boxes[i][j] == 0:
             allRipe = False
-if len(maturedTomatos) == 0:
-    print(-1)
-elif allRipe: 
+if allRipe: 
     print(0)
 else :
     def bfs():
         queue = deque()
         count = -1
-        for maturedTomato in maturedTomatos:
-            queue.append(maturedTomato)
+        for i in range(N):
+            for j in range(M):
+                if boxes[i][j] == 1 :
+                    queue.append((i, j))
 
         while queue:
             for _ in range(len(queue)):
