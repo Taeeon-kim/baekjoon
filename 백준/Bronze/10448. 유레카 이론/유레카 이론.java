@@ -1,44 +1,48 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int caseCount = sc.nextInt();
-        int[] numbers = new int[caseCount];
-        int[] result = new int[caseCount];
-        for (int i = 0; i < caseCount; i++) {
-            int n = sc.nextInt();
-            numbers[i] = n;
+
+    static boolean[] isEurekaNumber = new boolean[1001]; // index 1000까지 쓸려면 갯수 1001
+
+    public static void preprocess(){
+        // 1. k보다 작은 삼각수를 구한다.
+        int[] triangleNumbers = new int[50];
+        int triangleNumberCount =0;
+        for(int i=1; ; i++){
+            int triangleNumber = i*(i+1)/2;
+            if(triangleNumber >= 1000) break;
+            triangleNumbers[triangleNumberCount++] = triangleNumber;
         }
 
-        for (int c = 0; c < caseCount; c++) {
-            outer:
-            for (int i = 1; i <= getNFromT(numbers[c]); i++) {
-                for (int j = 1; j <= getNFromT(numbers[c]); j++) {
-                    for (int k = 1; k <= getNFromT(numbers[c]); k++) {
-                        if ((T(i) + T(j) + T(k)) == numbers[c]) {
-
-                            result[c] = 1;
-                            break outer;
-                        }
-                    }
-                }
+        // 2. 구해진 삼각수 세개의 합으로 K를 나타낼 수있는지 확인한다.
+        boolean[] isSumOfTriangleNumber = new boolean[1000];
+        for(int i=0; i<triangleNumberCount; i++){
+            for(int j=0; j<triangleNumberCount; j++){
+                int sum = triangleNumbers[i] + triangleNumbers[j];
+                if(sum < 1000) isSumOfTriangleNumber[sum] = true;
             }
         }
 
-        for (int i = 0; i < caseCount; i++) {
-            System.out.println(result[i]);
+        for(int i = 1; i < 1000; i++){
+            if(!isSumOfTriangleNumber[i]) continue;
+            for(int j = 0; j < triangleNumberCount; j++){
+                int sum = i + triangleNumbers[j];
+                if(sum <= 1000 ) isEurekaNumber[sum] = true;
+            }
         }
 
+    }
+
+    public static void main(String[] args) {
+
+        preprocess();
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        while(T-- >0){
+            int K = sc.nextInt();
+            System.out.println(isEurekaNumber[K] ? "1": "0");
+        }
 
     }
 
-    static int T(int n) {
-        return n * (n + 1) / 2;
-    }
-
-    public static int getNFromT(int t) {
-        double n = (-1 + Math.sqrt(1 + 8.0 * t)) / 2.0;
-        return (int) n;
-    }
 }
