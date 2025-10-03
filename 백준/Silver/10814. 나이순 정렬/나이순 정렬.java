@@ -1,18 +1,20 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         // 1. Scanner로 받아서 해보고 최대 n 이 100,000 이니 bufferedReader, InputStreamReader 사용 차이볼것
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int count = 0;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        int N = Integer.parseInt(br.readLine());
         User[] users = new User[N];
         for (int i = 0; i < N; i++) { // O(N)
-            int age = sc.nextInt();
-            String name = sc.next();
-            users[i] = new User(count, name, age);
-            count++;
+            String[] tokens = br.readLine().split(" ");
+            int age = Integer.parseInt(tokens[0]);
+            String name = tokens[1];
+            users[i] = new User(i, name, age);
         }
 
         // 2. sort
@@ -24,8 +26,9 @@ public class Main {
         });
 
         for (User user : users) { // O(N)
-            System.out.println(user.age + " " + user.name);
+            sb.append(user.age).append(" ").append(user.name).append("\n");
         }
+        System.out.print(sb);
     } // O(NlogN) + O(N) + O(N) -> O(NlogN)
 
     public static class User {
