@@ -29,9 +29,6 @@ public class Main {
     public static class User implements Comparable<User> {
         @Override
         public int compareTo(User o) {
-            if( age == o.age){
-                return idx - o.idx;
-            }
             return age - o.age;
         }
 
