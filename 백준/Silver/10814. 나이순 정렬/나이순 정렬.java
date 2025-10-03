@@ -18,12 +18,7 @@ public class Main {
         }
 
         // 2. sort
-        Arrays.sort(users, (o1, o2) -> { // O(NlogN)
-            if( o1.age == o2.age){
-                return o1.idx - o2.idx;
-            }
-            return o1.age - o2.age;
-        });
+        Arrays.sort(users);
 
         for (User user : users) { // O(N)
             sb.append(user.age).append(" ").append(user.name).append("\n");
@@ -31,7 +26,15 @@ public class Main {
         System.out.print(sb);
     } // O(NlogN) + O(N) + O(N) -> O(NlogN)
 
-    public static class User {
+    public static class User implements Comparable<User> {
+        @Override
+        public int compareTo(User o) {
+            if( age == o.age){
+                return idx - o.idx;
+            }
+            return age - o.age;
+        }
+
         int idx;
         String name;
         int age;
