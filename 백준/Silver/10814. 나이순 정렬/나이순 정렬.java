@@ -11,9 +11,9 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         User[] users = new User[N];
         for (int i = 0; i < N; i++) { // O(N)
-            String[] tokens = br.readLine().split(" ");
-            int age = Integer.parseInt(tokens[0]);
-            String name = tokens[1];
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int age = Integer.parseInt(st.nextToken());
+            String name = st.nextToken();
             users[i] = new User(i, name, age);
         }
 
