@@ -1,20 +1,24 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // 1. 입력을 Scanner로 받기
-        Scanner scanner = new Scanner(System.in);
-        int N = scanner.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        int N = Integer.parseInt(br.readLine());
         Set<String> set = new HashSet<>();
 
         for (int i = 0; i < N; i++) {
-            set.add(scanner.next());
+            set.add(br.readLine());
         }
-        
+
         String[] words = set.stream().toArray((size) -> new String[size]);
 
-        // 1-1. 시간성능확인후 StringBuild로도 바꿔서 StringBuild buffered? 사용
+  
         Arrays.sort(words, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
@@ -25,7 +29,8 @@ public class Main {
             }
         });
         for (String word : words) {
-            System.out.println(word);
+            sb.append(word).append("\n");
         }
+        System.out.println(sb);
     }
 }
