@@ -14,19 +14,11 @@ public class Main {
         int M = Integer.parseInt(st.nextToken());
 
         int[][] acc = new int[N+1][N+1];
-        int[][] arr = new int[N+1][N+1];
-        for (int i = 1; i <= N; i++) {
-            st = new StringTokenizer(br.readLine());
-            for (int j = 1; j <= N; j++) {
-                arr[i][j] = Integer.parseInt(st.nextToken());
-            }
-        }
 
         for (int i = 1; i <= N; i++) {
-//        st = new StringTokenizer(br.readLine());
+        st = new StringTokenizer(br.readLine());
             for(int j = 1; j <= N; j++){ // O(N^2)
-//            acc[i][j] = acc[i-1][j] + acc[i][j-1] - acc[i-1][j-1] + Integer.parseInt(st.nextToken());
-                acc[i][j] = acc[i-1][j] + acc[i][j-1] - acc[i-1][j-1] + arr[i][j];
+            acc[i][j] = acc[i-1][j] + acc[i][j-1] - acc[i-1][j-1] + Integer.parseInt(st.nextToken());
             }
         }
 
