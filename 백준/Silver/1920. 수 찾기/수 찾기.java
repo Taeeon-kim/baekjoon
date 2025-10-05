@@ -21,8 +21,10 @@ public class Main {
         int M = Integer.parseInt(br.readLine());
 
         st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < M; i++) {
-        System.out.println(set.contains(Integer.parseInt(st.nextToken())) ? 1 : 0);
+            sb.append(set.contains(Integer.parseInt(st.nextToken())) ? 1 : 0).append("\n");
         }
+        System.out.println(sb);
     }
 }
