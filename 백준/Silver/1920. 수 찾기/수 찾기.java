@@ -1,24 +1,28 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine());
         Set<Integer> set = new HashSet<>();
+        StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            set.add(sc.nextInt()); // OS 부담고려
+            set.add(Integer.parseInt(st.nextToken())); // OS 부담고려
         }
 
-        int M =sc.nextInt();
-        while(M-->0){
-            int x = sc.nextInt();
-            System.out.println(set.contains(x) ? 1 : 0);
+        int M = Integer.parseInt(br.readLine());
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < M; i++) {
+        System.out.println(set.contains(Integer.parseInt(st.nextToken())) ? 1 : 0);
         }
-        
     }
 }
