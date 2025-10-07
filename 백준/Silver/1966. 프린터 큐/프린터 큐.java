@@ -5,7 +5,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int taskCase = Integer.parseInt(br.readLine());
-        int[] result = new int[taskCase];
         for (int i = 0; i < taskCase; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int N = Integer.parseInt(st.nextToken());
@@ -43,4 +42,5 @@ public class Main {
             this.priority = priority;
         }
     }
+
 }
