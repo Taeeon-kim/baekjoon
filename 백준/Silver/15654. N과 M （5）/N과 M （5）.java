@@ -7,7 +7,7 @@ public class Main {
     static int[] numbers;
     static boolean[] checked;
     static int[] output;
-
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
@@ -23,16 +23,18 @@ public class Main {
 
         Arrays.sort(numbers); // 사전순 오름차순
         perm(0);
+        System.out.println(sb);
     }
+
+
 
     static void perm(int depth) {
         // base case
         if (depth == m) {
-            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < m; i++) {
                 sb.append(output[i]).append(" ");
             }
-            System.out.println(sb);
+            sb.append("\n");
             return;
         }
 
@@ -47,6 +49,4 @@ public class Main {
         }
 
     }
-
-
 }
